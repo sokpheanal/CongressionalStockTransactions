@@ -1,0 +1,278 @@
+---
+title             : "STOCK Act: a Decade in Review"
+shorttitle        : "STOCK Act"
+
+author: 
+  - name          : "Sokpheanal Huynh, M.S."
+    affiliation   : "1"
+    corresponding : yes    # Define only one corresponding author
+    address       : "326 Market St, Harrisburg, PA 17101"
+    email         : "shuynh@myhu.harrisburgu.edu"
+
+
+affiliation:
+  - id            : "1"
+    institution   : "Harrisburg University of Science and Technology"
+
+authornote: |
+  I would like to thank Professor Mark Newman for his guidance and contributions to this paper.
+Correspondence concerning this article should be addressed to Sokpheanal Huynh, 326 Market St, Harrisburg, PA 17101. E-mail: shuynh@myhu.harrisburgu.edu
+
+
+  
+  <!-- https://tinyurl.com/ybremelq -->
+  
+keywords          : "keywords"
+wordcount         : "X"
+
+bibliography      : ["r-references.bib"]
+
+floatsintext      : no
+figurelist        : no
+tablelist         : no
+footnotelist      : no
+linenumbers       : no
+mask              : no
+draft             : no
+
+header-includes:
+  - |
+    \makeatletter
+    \renewcommand{\paragraph}{\@startsection{paragraph}{4}{\parindent}%
+      {0\baselineskip \@plus 0.2ex \@minus 0.2ex}%
+      {-1em}%
+      {\normalfont\normalsize\bfseries\typesectitle}}
+    
+    \renewcommand{\subparagraph}[1]{\@startsection{subparagraph}{5}{1em}%
+      {0\baselineskip \@plus 0.2ex \@minus 0.2ex}%
+      {-\z@\relax}%
+      {\normalfont\normalsize\bfseries\itshape\hspace{\parindent}{#1}\textit{\addperi}}{\relax}}
+    \makeatother
+
+csl               : "`r system.file('rmd', 'apa7.csl', package = 'papaja')`"
+documentclass     : "apa7"
+output:
+  papaja::apa6_pdf:
+    includes:
+      after_body: "appendix.tex"
+
+---
+
+```{r setup, include = FALSE}
+library("papaja")
+```
+
+```{r analysis-preferences}
+# Seed for random number generation
+set.seed(42)
+knitr::opts_chunk$set(cache.extra = knitr::rand_seed)
+```
+In the fast-pace world of finance, It is of utmost importance to uphold the integrity of trading practices, thereby ensuring a level playing field for all participants.
+There have been recent legislative actions, sought to address the issues of insider trading, ones that involves elected officials with access to non-public information in particular.
+The STOCK Act (Stop Trading om Congressional Knowledge Act) is the outcome of such legislative initiative.
+The STOCK Act was enacted to enhance transparency and enforce accountability to all elected officials, including those at the very top of the government.
+
+This paper looks at the STOCK Act and its impact on insider trading activities among elected officials in Congress.
+By analyzing previous studies, historical context, and actual stock trading, including executives and their returns, this study seeks to assess the effectiveness of the Stock Act in achieving its intended objectives.
+In addition, the paper will examine examples and case studies that, attempting to provide insight into the real-world impact of the law.
+Thus, it is looking to determine whether the legislation has successfully eliminated insider trading by Congress officials.
+
+As we navigate the complexities of policies, constitutional, and ethical considerations, the purpose of this review is to contribute to a better understanding of the role of the STOCK Act in promoting accountability and maintaining public trust in their elected officials.
+Despite these efforts, recent events have raised concerns about the possibility of insider trading among Congress members, rekindling interest in this area of study [@Gutierrez2024].
+
+# Literature Review
+
+To contextualize the discussion, it is important to understand the market returns and efficiency of capital markets.
+@Sharpe1964 introduced a model of equilibrium in capital markets under risk and uncertainty, providing a sound asset valuation theory.
+Sharpe’s model of equilibrium in the capital market under risk and uncertainty provides a foundational understanding of asset price determination. 
+It provides a good starting point for asset pricing understanding.
+However, it mostly deals with general market ideas.
+
+@Fama1970 expanded on this with the efficient market view, arguing that market prices fully reflect all available information.
+Later, @Fama1991 reviewed two decades of market performance research, discussing experiments and findings.
+@Fama1992 examined the determinants of average stock returns and found that firm size and book market preference explain cross-sectional variation.
+@Fama1993 examines the common risks of stock and bond returns and identifies factors that explain the differences between the two markets.
+@Fama1998 examined the evidence for long-term return anomaly, concluding that the anomaly literature does not substantially challenge the efficient market hypothesis.
+Fama’s recent work [@Fama2015] introduced a five-factor model of asset prices.
+It considered market exposure, size, cost, profitability and investment growth.
+Fama's documentation of market efficiency, risks, and understanding of asset pricing models are valuable for explaining overall market behavior
+However, their direct application to the unique context of congressional bank trading may be limited, as these practices revolve around broader market.
+In further examining the relevance of capital market returns and efficiencies to congressional stock trading, it is crucial to acknowledge the limitations of existing models in capturing the intricacies of legislative decision-making.
+
+While Sharpe’s equilibrium model and Fama’s efficient market hypothesis provide fundamental insights into asset price determination, their general applicability to the unique environment of congressional stock trading may be constrained.
+Expanding on Fama’s five-factor asset pricing model, which considers exposures to market, size, value, profitability, and investment growth, it becomes apparent that the factors influencing asset pricing in the broader market may not mirror the complexities faced by legislators in their investment activities. 
+The specific informational advantages, regulatory constraints, and ethical considerations inherent in congressional decision-making demand a tailored analytical approach.
+
+The work of Mossin [@Mossin1966], remains a cornerstone in the literature on capital market equilibrium, providing a comprehensive and foundational framework of monetary policy that continues to frame discussions of investor behavior, risk assessment, and of market development.
+Moreover, Mossin’s underpinning economic model is still relevant for understanding investor behavior and risk analysis.
+However, political dynamics lead to broader changes that go beyond the traditional capital market equilibrium model.
+Given the evolution of financial markets, these underlying principles must be constantly reassessed in legislative practice.
+As part of a broader body of literature on capital market performance and returns, Mosin's contribution highlights the importance of understanding the decision-making processes of individual investors in a dynamic and evolving economic environment plant
+Although the paper contributes to the general literature, its direct application to the specific nuances of congressional banking transactions may be limited.
+
+Sehun's analysis of insider trading data [@Seyhun1986] showed that although insiders can predict future stock price movements and profits, non-insiders cannot predict the importance of information asymmetry.
+Seyhun's exploration of insider trading data sheds light on the significance of information asymmetry in stock markets.
+Nevertheless, the translation of these findings to the realm of congressional stock trading requires a nuanced examination of the sources and implications of insider knowledge within the political sphere.
+While relevant to the broader discussion on stock markets, its application to congressional stock trading requires careful consideration of the specific context and actors involved.
+
+Carhart's work [@Carhart1997] on mutual fund performance revealed that short-term persistence in returns can be explained by common factors in stock returns.
+Its relevance to congressional stock trading lies in the examination of common factors influencing stock returns, but the direct link needs to be established.
+Carhart's identification of common factors in stock returns [@Carhart1997] offers insights that may resonate with congressional stock trading.
+However, the direct relationship between these details and legislative decision-making requires careful analysis.
+Examining the persistence of short-term returns should motivate researchers to examine how temporal factors affect the stock trading behavior of legislators.
+
+Barber's study of private equity investors [@Barber2000] showed overconfidence in over-trading and underperformance.
+The study offers a conceptual dimension that may be relevant to the understanding of the work practices of members of Congress.
+Nevertheless, the specific motivations and manifestations of overconfidence in politics deserve in-depth investigation.
+Thus, its application to congressional savings trading requires a closer examination of the psychological factors affecting the influence of legislators’ spending decisions.
+
+Cohen's research [@Cohen2008] explored how social networks facilitate information transfer between mutual fund managers and corporate boards.
+It introduces a socio-political element to financial decision-making. Cohen's exploration of social networks in facilitating information transfer is insightful for general financial contexts.
+However, the direct link to congressional stock trading requires consideration of the specific networks and information channels within the political landscape.
+In other words, the application of these network dynamics to congressional stock trading requires an analysis of the unique channels through which information flows within the political domain.
+
+@Fung2008 examined performance, risk, and capital flows in the hedge fund industry.
+While the paper contributes valuable insights to the hedge fund literature, its direct application to the unique context of congressional stock trading is limited.
+A dedicated analysis of factors influencing lawmakers' investment decisions, potential information advantages, and regulatory implications is necessary for a comprehensive understanding of the latter.
+
+Seasholes' study [@Seasholes2010] on individual investors and local bias challenged the notion that local stocks outperform, providing insights into transaction behaviors. 
+While the paper offers insights into transaction behaviors, its application to congressional stock trading requires an understanding of the unique factors influencing lawmakers' investment choices.
+
+@Bartram2016 examined the relationship between specific risk and market risk, especially during periods of high economic uncertainty.
+The paper provides valuable insights into market dynamics. 
+However, their direct relevance to congressional securities trading requires an analysis of how these risks manifest themselves in politics.
+
+The topic of insider trading is not a new topic by any means.
+@Lakonishok2001 argues in the 2001 paper that insider trading is frequently done.
+The conclusion was based on transaction data on various exchanges from 1975-1995.
+The author suggests that the insiders can out-perform contrarian investor, who goes against the market trend, in predicting the general direction of the market.
+Yet, this ability generally only apply to smaller firms.
+Additionally, purchases are more informative than sales.
+
+In the 2003 study, @Jeng2003 concluded that purchasing transactions with insider information do have returns of over 6% per year, while selling transactions for not yield returns that is higher than that of the market.
+This coincides with the findings in @Lakonishok2001's paper.
+The study applied the performance-evaluation method on the trades.
+The method was chosen because the authors intended to calculate the estimated returns earned by insiders.
+
+In summary, while the foundational work on capital market returns and efficiencies provides important information for understanding financial markets, their direct extension to parliamentary securities trading is required to have a particular lens that takes into account the distinctive aspect of legislative decision-making.
+
+Turning to congressional stocks trading, the foundation provisions formed a more nuanced analysis.
+Becker's model [@Becker1983] examined competition between pressure groups for political influence.
+Ferejohn’s model [@Ferejohn1986] provided valuable insights into the broader political landscape by examining how voters formulate incentives for incumbents, with a focus on electoral competition.
+Baker's model of competition between pressure groups and Ferrejon's focus on electoral competition informed the understanding of political influence.
+While these examples do not explicitly address stock trading, they lay the foundation for understanding the motivations and incentives that can influence legislative decisions.
+
+The initial research conducted by Ziobrowski in 2004 [@Ziobrowski2004] shed light on the advantages that Congress members had in stock investments, between 1993 and 1998.
+A later study by Ziobrowski in 2011 [@Ziobrowski2011] revealed that House members experienced returns from equity market investments.
+Performance differences could be observed based on factors like political party affiliation.
+Lenzs 2010 article [@Lenz2010] examined the wealth accumulation trends of U.S. House members using data to that found in public surveys.
+Ziobrowskis investigation into banking activities and the resulting abnormal returns along, with Lenzs analysis of wealth accumulation patterns were noteworthy.
+
+Ward's theory [@Ward1995] regarding the competition between pressure groups provides insights into how political influence operates.
+Additionally the research by Caselli and Morelli [@Caselli2004] delves into the variations in the caliber of elected officials suggesting that individuals, with quality may excel in career pursuits. 
+The theories posited by Ward and the study conducted by Caselli and Morelli shed light on the complexities of influence dynamics in the political environment.
+However, their direct application to congressional stock trading requires careful consideration of the specific factors at play.
+
+Kroszner's study [@Kroszner2005] regarding lawmakers establishing credibility and garnering donations provides insights, into effect of financial aspects in politics.
+Dal Bo, Dal Bo, and Di Tella's model [@DalBo2006] explores the influence of interest groups using both bribes and threats of punishment.
+Kroszner's research on legislators building reputations and Dal Bo et al.'s model on interest groups' influence using bribes and threats provide financial perspectives on political influence.
+While not directly addressing stock trading, these works shed light on the broader financial aspects of political decision-making.
+
+@Jerke2010 delved into political intelligence trading, a growing practice where government officials supply information to hedge funds.
+@Eggers2013 analyzed the investment performance of members of Congress, finding little evidence of systematic profit from insider information.
+Eggers' later work [@Eggers2014] explored how political connections manifest in congressional portfolios.
+Jerke's exploration of political intelligence trading and its intersection with hedge funds introduces a contemporary layer to the discussion of informational advantages.
+Eggers's analysis of the investment performance of members of Congress [@Eggers2013], along with subsequent work [@Eggers2014] on political connections in congressional portfolios, adds empirical depth to the understanding of legislative stock trading.
+
+Tahoun's study [@Tahoun2014] investigated the relationship between U.S. politicians' stock ownership and campaign contributions.
+Cherry's work [@Cherry2018] studied Senators' stock trading activities before and after the STOCK Act, and finding evidence of abnormal returns before increased scrutiny contributed to the body of evidence on potential links between financial interests and legislative actions.
+
+In the 2013 study, Fritz investigated the insider trading laws in detail [@Fritz2013].
+The author started with when insider trading was governed by state laws, until the federal government codify insider trading law on the federal level.
+Fritz presented examples of dubious transactions of former Speaker of the House, such as, Speaker Dennis Hastert in 2005, Speaker Nancy Pelosi, Senator Harry Reid's advisers in 2008 etc. that ended up earning these officials huge profits.
+Fritz meticulously explored notable clauses of the STOCK Act and evaluated them with real-life examples, occasionally with specific lawsuits.
+The author also examined other laws, aimed to prevent insider trading, such as, Sarbanes-Oxley Act, as well as, Congressional Ethics Rules on insider trading.
+He concluded that these laws are inadequate in preventing stock trading using congressional knowledge by Congress officials.
+
+@Karadas2021 argues that STOCK Act was, indeed, effective in preventing Congress members to trade upon non-public or Congressional macroeconomics knowledge.
+Past literature, examined by the authors suggest that there is evidence that the STOCK Act was successful in its purpose to put a stop to insider trading by Congress members.
+In addition, the authors scrutinized 101,191 transactions from 2004 to 2014, which were both before and after the enactment of STOCK Act, and concluded that the legislation negatively impacted the Congress members' ability to make informed trades with non-public information.
+
+Belmont's recent analysis [@Belmont2022] found no evidence of superior investment performance on average among House Members.
+It concluded that superior investment performance is absent on average among House Members, raising intriguing questions about the possibility of undiscovered insider trading that may not be captured by average results.
+However, it acknowledged potential insider trading that may not be captured by average results.
+These studies directly address various aspects of congressional stock trading, including political intelligence trading, investment performance, political connections, and abnormal returns.
+They are highly relevant to the research topic and provide essential empirical evidence.
+
+The intersection where politics meets finance has always been a complicated interplay which calls for continuous investigation.
+Therefore, this research area’s shows that it must still be closely, and potential abuses examined so as to maintain the fairness of financial markets and political arenas.
+Thus, as duly elected officials, it is imperative for these individuals to upheld the integrity of their office and the people's trust.
+
+The purpose of the STOCK Act is to maintain the integrity of Congress in limiting insider trading.
+In pursuant to the Ethics in Government Act, which was amended by the STOCK Act subjects Members, family members, and certain staffers to Periodic Transaction Report Filing, where they are required to submit Periodic Transaction Reports (PTR) of any transaction of stock, bond, etc., exceeding $1,000.
+Members are required to file the PTR within 30 days of receiving notice of the transaction.
+Late filings can happen, but no more than 45 days after the transactions.
+As the purpose of this paper is to assess the efficacy of the STOCK Act, it is imperative to analyze if the aforementioned rule, which is undoubtedly important in maintaining the integrity of Congress, has been effective and closely adhered to by the members. It can be hypothesize that there is a group difference in the reporting lag for the three dimensions of the dataset.
+
+## Data Analytic Plan
+
+### Retrieval of Tickers
+
+The first step of data ingestion would be downloading all available company tickers [SEC-tickers](https://www.sec.gov/file/company-tickers) [@SEC-tickers] from the U.S. Securities and Exchange Commission (SEC) by parsing and writing the tickers into a CSV file with a Python script.
+This would retrieve a set of tickers of publicly-traded companies on various U.S. exchanges.
+
+### Transaction Data Retrieval
+
+The financial disclosure data were collected from a paid API, provided by [Finnhub](https://finnhub.io/docs/api/congressional-trading) [@FinnHub]. 
+The arguments needed for downloading the congressional trades from the API are symbols (tickers), from date (first date of the time window for which the data is collected), to date (last date of the time window for which the data is collected).
+
+The result of the API call would be a dictionary-type object, which contains data, an array of stock trades, and a second element called Symbol, or the traded security's tickers.
+The data item in the dictionary would contain a list with the following attributes; amountFrom (Transaction amount from), amountTo (Transaction amount to), assetName (Asset name), fillingDate (Filing date.), name (Name of the representative or senator), ownerType (Owner type), position (Position of the Congress member, senator or representative), symbol (Symbol or Ticker of the security being traded), transactionDate (Date of the transactions), transactionType (Transaction type of Sale or Purchase).
+
+The data collection process involved downloading all of the available financial disclosure records of all members.
+No direct interaction with participants occurred, and the data were collected without any experimental manipulation. The data collection process was solely based on the retrieval of existing public records.
+The downloaded data was compared to reports filed electronically by the senators or representatives.
+It was found that there is a slight discrepancy the filing and transaction dates retrieved from the API, which slightly deviated from the actual reported dates, but the transactions' amounts are accurate.
+There are also missing transactions, which can be investigated in later studies.
+
+### Congress members' affiliation (Republican or Democratic) retrieval
+
+To perform the analysis, congress member's party affiliation is also needed to be retrieved. The information can be extracted from C-Span's Congressional Chronicle website [C-Span](https://www.c-span.org/congress/members/) [@CSpan], then combined to the trade dataset to produce the dataset that can be used for the analysis. This dataset attributes are legislators' names, position (senator or representative), gender, state, and party.
+
+### Data cleaning and variables transformation
+
+Before conducting the analysis, the two dataset can be cleansed by going through a number of steps.
+In the legislator dataset, the index number attribute can be dropped.
+Position, gender, state, party attributes are factorized, with gender's labels to be updated to "Male" and "Female".
+The attribute assetName and ownerType are removed they do not provide insights to this analysis.
+The last step to clean this dataset is to enforce a unified date format on the filingDate and transactionDate attributes.
+
+## Dataset Description
+
+There are 97 unique legislators, who reported trades, retrieved from the transactions dataset and will be joined with the legislators' affiliation dataset to produce the dataset of which the analysis will be built upon.
+The dataset of which the analysis would be done on will consist of the following attributes; amountFrom, amountTo, filingDate, name (name of the legislator), position (senator or representative), symbol (stock's ticker), transactionType, gender, state, and party.
+
+A total of 12,523 transactions were retrieved.
+The earliest and latest filing date retrieved were January 31^st^, 2014, and April 17^th&, 2024. respectively.
+The earliest and latest transaction date retrieved were February 7^th^, 2012, and April 12^th^, 2024, respectively.
+There were 995 unique securities being traded by Congress members.
+From the final dataset, there are 9,854 trades made by members of the Republican party, and 2,669 from the Democratic counterpart.
+There are 10,829 male legislators, compared to 1,694 females.
+
+\newpage
+
+```{r render_appendix, include=FALSE}
+render_appendix("Appendix.Rmd")
+```
+
+# References
+```{r create_r-references}
+r_refs(file = "r-references.bib")
+```
+
+\begingroup
+\setlength{\parindent}{-0.5in}
+\setlength{\leftskip}{0.5in}
+
+<div id="refs" custom-style="Bibliography"></div>
+\endgroup
