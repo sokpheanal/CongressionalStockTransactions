@@ -1,0 +1,308 @@
+---
+title: "Appendix"
+author:
+  - 'Sokpheanal Huynh'
+  - 'Mark Newman'
+date: "2024/05/15"
+editor_options: 
+  chunk_output_type: console
+---
+add commentary
+```{r message = FALSE, warning = FALSE, echo = FALSE}
+here::i_am('Appendix.rmd')
+library(dplyr)
+library(tidyr)
+library(lubridate)
+library(knitr)
+library(kableExtra)
+library(ggplot2)
+library(nortest)
+library(here)
+
+rm(list = ls())
+options(scipen = 999)
+knitr::opts_chunk$set(results = 'hold', echo = FALSE)
+```
+
+* [t1](manual extract)
+* [t3](https://github.com/sokpheanal/FinnHub)
+
+```{r message = FALSE, warning = FALSE, echo = FALSE}
+leg <- read.csv(here('data/legislators.csv'))
+trans <- read.csv(here('data/all_available_transactions.csv'))
+```
+
+```{r}
+str(leg)
+str(trans)
+View(leg)
+View(trans)
+```
+
+```{r message = FALSE, warning = FALSE, echo = FALSE}
+leg <-
+  leg %>%
+  select(-X)
+leg <-
+  leg %>%
+  mutate(
+    position = factor(position),
+    gender = factor(gender, levels = c('M', 'F'), labels = c('Male', 'Female')),
+    state = factor(state),
+    party = factor(party))
+
+str(leg)
+```
+
+```{r}
+trans <-
+  trans %>%
+  select(-assetName, -ownerType)
+str(trans)
+
+trans <-
+  trans %>%
+  mutate(
+    filingDate = mdy(filingDate),
+    transactionDate = mdy(transactionDate))
+str(trans)
+View(trans)
+```
+
+
+**Question (Exploration)**: How many members of congress report trades?
+
+```{r}
+length(unique(trans$name))
+```
+
+suspect, but lets move forward
+
+**Question (Exploration)**: What are the names of members of congress that made trades, but do not appear in our crosswalk?
+
+```{r}
+t1 <-
+  trans %>%
+  select(name, position) %>%
+  unique() %>%
+  left_join(leg, by = c('name' = 'name', 'position' = 'position'))
+
+nrow(t1[is.na(t1$party),]) == 0
+```
+
+Make final dataset b/c nrow == 0
+
+```{r}
+data <-
+  trans %>%
+  left_join(leg, by = c('name' = 'name', 'position' = 'position'))
+nrow(data) == nrow(trans)
+nrow(data[is.na(data$party),]) == 0
+View(data)
+
+rm(list = ls()[!(ls() %in% 'data')])
+```
+
+**Question (Exploration)**: How many unique tickers?
+
+```{r}
+length(unique(data$symbol))
+```
+
+**Question (Exploration)**: Basic description of the data
+
+```{r}
+data <-
+  data %>%
+  mutate(lag = (filingDate - transactionDate)/ddays(x = 1))
+str(data)
+View(data)
+```
+
+
+```{r}
+t1 <- 
+  data %>%
+  select(gender)
+
+t1 %>%
+  group_by(gender) %>%
+  summarise(
+    count = n()) %>%
+  arrange(desc(count)) %>%
+  kable(
+    caption = 'Trades Count by Gender',
+    col.names = c('Gender', 'Count')) %>%
+  kable_styling()
+
+ggplot(t1,
+       aes(x = gender, fill = gender)) +
+  theme_bw() +
+  geom_bar() +
+  scale_fill_brewer(palette = "Dark2") +
+  labs(title = 'Figure 1. Trades Count by Gender')
+```
+
+```{r}
+t2 <- 
+  data %>%
+  select(party)
+
+t2 %>%
+  group_by(party) %>%
+  summarise(
+    count = n()) %>%
+  arrange(desc(count)) %>%
+  kable(
+    caption = 'Trades Count by Political Party',
+    col.names = c('Party', 'Count')) %>%
+  kable_styling()
+
+ggplot(t2, aes(x = party, fill = party)) +
+  theme_bw() +
+  geom_bar() + 
+  scale_fill_brewer(palette = "Dark2") +
+  labs(title = 'Figure 2. Trades Count by Party')
+```
+
+```{r}
+t3 <- 
+  data %>%
+  select(state)
+
+t3 %>%
+  group_by(state) %>%
+  summarise(
+    count = n()) %>%
+  arrange(desc(count)) %>%
+  kable(
+    col.names = c('State', 'Count')) %>%
+  kable_styling()
+```
+
+```{r}
+t4 <- 
+  data %>%
+  select(lag) %>%
+  filter(!is.na(lag))
+
+t4 %>%
+  summarise(
+    mean = mean(lag),
+    median = median(lag),
+    sd = sd(lag),
+    iqr = IQR(lag)) %>%
+  kable(
+    col.names = c('Mean', 'Median', 'SD', "IQR"),
+    digits = 2) %>%
+  kable_styling() %>%
+  add_header_above(header = c('Lag' = 4))
+
+ggplot(t4, aes(y = lag)) +
+  theme_bw() +
+  geom_boxplot() +
+  labs(title = 'Overall Lag Descriptive Statistics',
+       caption = 'Figure 3. Overall Lag Descriptive Statistics')
+```
+
+**Questions**
+
+Who files fastest: (tests of `lag`) 
+
+* M vs F (`gender`)
+* D vs R (`party`)
+* what state is the most responsive (`state`)
+   
+```{r}
+t1 <- 
+  data %>%
+  select(lag, gender) %>%
+  filter(!is.na(lag))
+
+t1 %>%
+  group_by(gender) %>%
+  summarise(
+    mean = mean(lag),
+    median = median(lag),
+    sd = sd(lag),
+    iqr = IQR(lag)) %>%
+  arrange(desc(median)) %>%
+  kable(
+    caption = 'Lag by Gender',
+    col.names = c('Gender', 'Mean', 'Median', 'SD', "IQR"),
+    digits = 2) %>%
+  kable_styling() %>%
+  add_header_above(header = c(' ' = 1, 'Lag' = 4))
+
+ggplot(t1, aes(x = lag, color = gender)) +
+  theme_bw() +
+  geom_density() +
+  scale_color_brewer(palette = "Dark2") +
+  labs(title = 'Lag by Gender')
+
+lillie.test(t1$lag[t1$gender == 'Male'])
+lillie.test(t1$lag[t1$gender == 'Female'])
+
+wilcox.test(lag ~ gender, data = t1)
+```
+
+`lillie.test()` demonstrates non-normality, choose non-parametric test.
+`Wilcox.test()`: p is less than 0.05 so we reject the null hypothesis and say that there is evidence to suggest a difference in group median.
+
+
+```{r}
+t2 <- 
+  data %>%
+  select(lag, party) %>%
+  filter(!is.na(lag))
+
+t2 %>%
+  group_by(party) %>%
+  summarise(
+    mean = mean(lag),
+    median = median(lag),
+    sd = sd(lag),
+    iqr = IQR(lag)) %>%
+  arrange(desc(median)) %>%
+  kable(
+    caption = 'Lag by Party',
+    col.names = c('Party', 'Mean', 'Median', 'SD', 'IQR'),
+    digits = 2) %>%
+  kable_styling() %>%
+  add_header_above(header = c(' ' = 1, 'Lag' = 4))
+
+ggplot(t2, aes(x = lag, color = party)) +
+  theme_bw() +
+  geom_density() +
+  scale_color_brewer(palette = "Dark2")
+
+lillie.test(t2$lag[t2$party == 'Democratic'])
+lillie.test(t2$lag[t2$party == 'Republican'])
+
+wilcox.test(lag ~ party, data = t2)
+```
+
+`lillie.test()` demonstrates non-normality, choose non-parametric test.
+`Wilcox.test()`: p is less than 0.05 so we reject the null hypothesis and say that there is evidence to suggest a difference in group median.
+
+```{r}
+t3 <- 
+  data %>%
+  select(lag, state) %>%
+  filter(!is.na(lag))
+
+t3 %>%
+  group_by(state) %>%
+  summarise(
+    mean = mean(lag),
+    median = median(lag),
+    sd = sd(lag),
+    iqr = IQR(lag)) %>%
+  arrange(desc(median)) %>%
+  kable(
+    caption = 'Lag by State',
+    col.names = c('State', 'Mean', 'Median', 'SD', 'IQR'),
+    digits = 2) %>%
+  kable_styling() %>%
+  add_header_above(header = c(' ' = 1, 'Lag' = 4))
+```
