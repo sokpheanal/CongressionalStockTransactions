@@ -19,3 +19,36 @@ This repository contains the data analysis and findings related to the STOCK Act
 
 ## Future Directions:
 The study highlights the need for stricter enforcement of the STOCK Act and more comprehensive data to ensure accurate insights into Congressional financial practices.
+
+## Requirements
+
+### Python Packages
+The following Python libraries are required to run the `get_FinnHub_data.ipynb` notebook:
+- `pandas`
+- `requests`
+- `finnhub`
+- `tqdm`
+- `dotenv`
+- `pathlib`
+- `os`
+- `json`
+- `time`
+- `csv`
+- `datetime`
+- `dateutil`
+
+### R Packages
+The following R libraries are required to run the `Appendix.rmd` file:
+- `dplyr`
+- `ggplot2`
+- `lubridate`
+- `tidyr`
+- `magrittr`
+- `corrplot`
+- `nortest`
+- `reshape2`
+- `kableExtra`
+- `htmlTable`
+- `here`
+- `knitr`
+- `papaja`
